@@ -7,4 +7,5 @@ export interface Book {
   description: string;
   publishedDate: string;
   genre: string;
+  imageUrl: string;
 }

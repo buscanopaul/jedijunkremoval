@@ -4,7 +4,8 @@ import { supabase } from "./supabase";
 const fetchBooks = async () => {
   const { data } = await supabase
     .from("books")
-    .select("id,title, image_url, rating, author");
+    .select("id,title, image_url, rating, author")
+    .order("created_at", { ascending: false });
   return data;
 };
 
