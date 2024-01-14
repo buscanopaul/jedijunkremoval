@@ -1,9 +1,9 @@
-import { View, Text, SafeAreaView, Pressable, Image } from "react-native";
-import React, { useEffect } from "react";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
-import { Ionicons, Entypo, Fontisto } from "@expo/vector-icons";
-import { Book } from "../../../utils/type";
-import useDateFormatter from "../../../lib/useDateFormatter";
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import React from "react";
+import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
+import Delete from "../../../components/Delete";
+import Edit from "../../../components/Edit";
 import convertToLongDate from "../../../lib/useDateFormatter";
 import { useBookById } from "../../../supabase/useBookById";
 
@@ -23,7 +23,7 @@ const FirstDetails = (props: Props) => {
     );
   }
 
-  if (isError) {
+  if (isError || !book) {
     return (
       <SafeAreaView className="mx-6">
         <Text>Erorr loading book by id</Text>
@@ -53,9 +53,9 @@ const FirstDetails = (props: Props) => {
         >
           <Ionicons name="chevron-back-outline" size={24} color="black" />
         </Pressable>
-        <View className="flex-row items-center gap-5">
-          <Fontisto name="bookmark" size={24} color="black" />
-          <Entypo name="dots-three-vertical" size={24} color="black" />
+        <View className="flex-row items-center">
+          <Delete id={id} />
+          <Edit data={book} />
         </View>
       </View>
       <Image

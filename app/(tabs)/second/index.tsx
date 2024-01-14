@@ -1,9 +1,9 @@
-import { View, Text, TextInput, Pressable } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
+import dayjs from "dayjs";
+import React, { useEffect, useState } from "react";
+import { Pressable, Text, View } from "react-native";
+import DateTimePicker from "react-native-ui-datepicker";
 import InputField from "../../../components/InputField";
 import { userInsertBook } from "../../../supabase/useInsertBook";
-import DateTimePicker from "react-native-ui-datepicker";
-import dayjs from "dayjs";
 
 type Props = {};
 
@@ -41,7 +41,7 @@ const Second = (props: Props) => {
     setGenre("");
   };
 
-  const handleRatingChange = (text) => {
+  const handleRatingChange = (text: string) => {
     // Regular expression to allow only float numbers
     const floatRegex = /^[0-9]*[.]?[0-9]*$/;
 
